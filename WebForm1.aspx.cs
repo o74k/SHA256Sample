@@ -21,12 +21,13 @@ namespace SHA256
             Label1.Text = CreateHMACSHA256(TextBox1.Text,TextBox2.Text);
         }
 
+        //HMACSHA256 
         private string CreateHMACSHA256(String inputText,String inKey)
         {
             var encoding = new System.Text.UTF8Encoding();
-
             byte[] keyByte = encoding.GetBytes(inKey);
             byte[] messageBytes = encoding.GetBytes(inputText);
+
             using (var hmacSHA256 = new HMACSHA256(keyByte))
             {
                 byte[] hashMessage = hmacSHA256.ComputeHash(messageBytes);
@@ -34,12 +35,12 @@ namespace SHA256
             }
         }
 
+        //SHA256 
         private string CreateSHA256(String inputText, String inKey)
         {
             var encoding = new System.Text.UTF8Encoding();
             //byte[] keyByte = encoding.GetBytes(inKey);
             byte[] messageBytes = encoding.GetBytes(inputText);
-
 
             System.Security.Cryptography.SHA256 testSHA256 = System.Security.Cryptography.SHA256.Create();
 
